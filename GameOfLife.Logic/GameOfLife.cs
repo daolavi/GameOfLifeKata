@@ -11,14 +11,14 @@ public class GameOfLife
 
     public void NextGeneration()
     {
-        var newGrid = (Grid.Clone() as bool[,])!;
-        
         var rows = Grid.GetLength(0);
         var columns = Grid.GetLength(1);
+        var newGrid = new bool[rows, columns];
         for (var i = 0; i < rows; i++)
         {
             for (var j = 0; j < columns; j++)
             {
+                newGrid[i, j] = Grid[i, j];
                 var numberOfLiveNeighbors = GetNumberOfLiveNeighbors(i, j);
                 if (Grid[i, j])
                 {
